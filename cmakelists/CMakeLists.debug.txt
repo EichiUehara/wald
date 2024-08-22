@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.22)
+project(main)
+
+add_definitions(-DDEBUG)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
+find_package(RocksDB REQUIRED)
+find_package(redis++ REQUIRED)
+find_package(hiredis REQUIRED)
+find_package(nlohmann_json REQUIRED)
+
+file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
+add_executable(
+    ${PROJECT_NAME}
+    ${SRC_FILES}
+)
+target_link_libraries(${PROJECT_NAME} PRIVATE RocksDB::rocksdb)
+target_link_libraries(${PROJECT_NAME} PRIVATE redis++::redis++_static)
+target_link_libraries(${PROJECT_NAME} PRIVATE hiredis::hiredis_all_unofficial)
+target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)

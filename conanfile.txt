@@ -1,0 +1,14 @@
+[requires]
+rocksdb/9.4.0
+redis-plus-plus/1.3.12
+hiredis/1.2.0
+nlohmann_json/3.11.3
+
+
+[generators]
+CMakeToolchain
+CMakeDeps
+
+[options]
+rocksdb/9.4.0:use_rtti=True
+hiredis/1.2.0:with_ssl=True

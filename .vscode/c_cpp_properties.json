@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "~/.conan2/p/**/include/**"
+            ],
+            "defines": [],
+            "cStandard": "c17",
+            "cppStandard": "c++20"
+        }
+    ],
+    "version": 4
+}
