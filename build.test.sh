@@ -1,4 +1,5 @@
 export $(cat .env.dev | xargs)
+docker run -p 6379:6379 redis
 cp conanfile.test.txt conanfile.txt
 cp cmakelists/CMakeLists.test.txt CMakeLists.txt
 rm -rf build
