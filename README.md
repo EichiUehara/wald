@@ -1,3 +1,6 @@
+![Screenshot from 2024-08-24 03-00-06](https://github.com/user-attachments/assets/a2fed860-76fb-4289-afb5-ccf73bd87f72)
+
+
 ### 🚀 WALD: RocksDB WAL Log CDC Implementation for Microservices Architecture
 
 If you're adopting a microservices architecture, you'll likely need to implement an Out-of-the-Box pattern or a Change Data Capture (CDC) pattern. While tools like RedHat's Debezium and NewSQL provide implementations for this, there was a lack of clean, low-level CDC implementations specifically targeting RocksDB's WAL logs—especially for key-value stores used as databases for each domain.
