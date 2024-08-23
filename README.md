@@ -1,6 +1,12 @@
-## Wald ( Write Ahead log daemon )
+### 🚀 WALD: RocksDB WAL Log CDC Implementation for Microservices Architecture
 
-Low level CDC solution for rocksdb Write Ahead Log
+If you're adopting a microservices architecture, you'll likely need to implement an Out-of-the-Box pattern or a Change Data Capture (CDC) pattern. While tools like RedHat's Debezium and NewSQL provide implementations for this, there was a lack of clean, low-level CDC implementations specifically targeting RocksDB's WAL logs—especially for key-value stores used as databases for each domain.
+
+So, I decided to create one myself! 🎉
+
+⚠️ **Note:** This project is not even at beta level yet, but there's a strong demand for this kind of tool. I'll be dedicating more time to enhancing it. 
+
+If you're proficient in C++, I'd really appreciate some help! 🙏💻 Let's make this awesome together! 🌟
 
 ### Use Case
 
@@ -11,9 +17,3 @@ Data Sync
 Database Replication
 
 Create your own distributed database.
-
-### Related Works
-
-If you need a higher level and robust solution, use debezium : https://debezium.io/
-
-Or use new SQL provider's CDC solution.
