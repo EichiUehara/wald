@@ -18,14 +18,13 @@ protected:
     MockRedisRepo mockRedisRepo;
     RocksWalBatchHandler handler;
     RocksWalBatchHandlerTest()
-        : redis("tcp://127.0.0.1:6379"),  // Assuming Redis is running locally on default port
+        : redis("tcp://127.0.0.1:6379"),
           mockRedisRepo(redis),
           handler(mockRedisRepo, "test_queue") {}
     void SetUp() override {
     }
 
     void TearDown() override {
-        // delete &handler;
     }
 };
 
@@ -38,16 +37,10 @@ TEST_F(RocksWalBatchHandlerTest, PutCFTest) {
     expected_json["k"] = key;
     expected_json["v"] = value;
     expected_json["op"] = "Put";
-    // Using regex match for timestamp as it's generated dynamically
-
 
     // Act
     auto result = handler.PutCF(0, rocksdb::Slice(key), rocksdb::Slice(value));
     EXPECT_TRUE(result.ok());
-    // EXPECT_CALL(mockRedisRepo, SendToRedisQueue("test_queue", MatchesRegex(R"(\{"k":"test_key","v":"test_value","op":"Put","t":[0-9]+\})")));
-
-    // Assert
-    // Expectations set by EXPECT_CALL will automatically verify the results
 }
 
 TEST_F(RocksWalBatchHandlerTest, DeleteCFTest) {
@@ -57,13 +50,8 @@ TEST_F(RocksWalBatchHandlerTest, DeleteCFTest) {
     json expected_json;
     expected_json["k"] = key;
     expected_json["op"] = "Delete";
-    // Using regex match for timestamp as it's generated dynamically
 
     // Act
     auto result = handler.DeleteCF(0, rocksdb::Slice(key));
     EXPECT_TRUE(result.ok());
-    // EXPECT_CALL(mockRedisRepo, SendToRedisQueue("test_queue", MatchesRegex(R"(\{"k":"test_key","op":"Delete","t":[0-9]+\})")));
-
-    // Assert
-    // Expectations set by EXPECT_CALL will automatically verify the results
 }

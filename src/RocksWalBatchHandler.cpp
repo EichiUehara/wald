@@ -17,9 +17,6 @@ rocksdb::Status RocksWalBatchHandler::PutCF(
         j["op"] = "Put";
         std::string jsonStr = j.dump();
         redisRepo.SendToRedisQueue(queue_name, jsonStr);
-        #ifdef DEBUG
-        // std::cout << "PutCF: " << jsonStr << std::endl;
-        #endif
         return rocksdb::Status::OK();
     }catch(const std::exception& e){
         std::cout << "Error: " << e.what() << std::endl;
@@ -36,9 +33,6 @@ rocksdb::Status RocksWalBatchHandler::DeleteCF(uint32_t column_family_id, const 
         j["op"] = "Delete";
         std::string jsonStr = j.dump();
         redisRepo.SendToRedisQueue(queue_name, jsonStr);
-        #ifdef DEBUG
-        std::cout << "DeleteCF: " << jsonStr << std::endl;
-        #endif
         return rocksdb::Status::OK();
     }catch(const std::exception& e){
         std::cout << "Error: " << e.what() << std::endl;

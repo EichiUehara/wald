@@ -13,7 +13,6 @@ public:
     RocksWalProcessor(const std::string& redis_host, const std::string& redis_port,
                       const std::string& rocksdb_primary_path, const std::string& rocksdb_state_path,
                       const std::string& rocksdb_walseq_state_key, const std::string& redis_queue_name);
-    
     void run();
     void stop();
 
